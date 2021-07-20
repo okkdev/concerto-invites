@@ -11,7 +11,6 @@ const Lobby = ({ valid, data }) => {
         <>
           <Head>
             <meta property="og:title" content={msg} />
-            <meta property="og:url" content={"concerto://lobby:" + msg} />
             <meta name="theme-color" content="#04750c" />
             <meta
               property="og:description"
@@ -43,6 +42,11 @@ const Lobby = ({ valid, data }) => {
         <>
           <Head>
             <meta property="og:title" content={msg} />
+            <meta name="theme-color" content="#910f12" />
+            <meta
+              property="og:description"
+              content="Create a new lobby in Concerto!"
+            />
           </Head>
           <div>{msg}</div>
         </>
@@ -54,6 +58,11 @@ const Lobby = ({ valid, data }) => {
       <>
         <Head>
           <meta property="og:title" content={msg} />
+          <meta name="theme-color" content="#910f12" />
+          <meta
+            property="og:description"
+            content="Create a new lobby in Concerto!"
+          />
         </Head>
         <div>{msg}</div>
       </>
@@ -64,11 +73,6 @@ const Lobby = ({ valid, data }) => {
     <>
       <Head>
         <title>Lobby Invite #{data.lobby}</title>
-        <meta name="theme-color" content="#910f12" />
-        <meta
-          property="og:description"
-          content="Create a new lobby in Concerto!"
-        />
         <meta
           property="og:image"
           content={"https://" + data.host + "/img/concerto_icon.png"}
@@ -83,6 +87,7 @@ const Lobby = ({ valid, data }) => {
 }
 
 export async function getServerSideProps(context) {
+  console.log(context)
   const lobby = context.params.lobby
   const valid = /^[0-9]{4}$/.test(lobby)
   let open = false
