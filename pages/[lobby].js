@@ -1,4 +1,5 @@
 import Head from "next/head"
+import { useEffect } from "react"
 
 const Lobby = ({ valid, data }) => {
   let body = <>Something went wrong</>
@@ -15,14 +16,22 @@ const Lobby = ({ valid, data }) => {
           <div>{msg}</div>
           <a
             href={"concerto://lobby:" + data.lobby}
-            className="inline-flex items-center px-6 py-3 mt-3 text-base font-medium bg-red-700 border border-transparent rounded-md shadow-sm hover:bg-red-800 focus:outline-none"
+            className="inline-flex items-center px-6 py-3 mt-3 text-base font-medium bg-purple-700 border border-transparent rounded-md shadow-sm hover:bg-purple-800 focus:outline-none"
           >
-            Click here if the automatic joining didn't work
+            Click here if Concerto didn't launch automatically
           </a>
+          <div className="mt-6">
+            <p className="text-sm">Still not working?</p>
+            <p className="text-xs">
+              Did you run Concerto as administrator once to register the
+              handler?
+            </p>
+          </div>
         </>
       )
-      // test location.href
-      window.location.replace("concerto://lobby:" + data.lobby)
+      useEffect(() => {
+        window.location.replace("concerto://lobby:" + data.lobby)
+      }, [])
     } else {
       const msg = "Lobby #" + data.lobby + " is not open anymore"
       body = (
@@ -54,7 +63,7 @@ const Lobby = ({ valid, data }) => {
         <title>Lobby Invite #{data.lobby}</title>
         <meta
           property="og:description"
-          content="Lobby invites for Concerto. A visual front end for CCCaster, extending Melty Blood Community Edition."
+          content="Click the link to join the Lobby with Concerto"
         />
         <meta
           property="og:image"
