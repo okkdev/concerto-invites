@@ -1,0 +1,6 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css");
+
+html {
+  @apply h-full text-gray-50 bg-gradient-to-tr from-purple-900 to-red-800;
+  font-family: "Plus Jakarta Display", sans-serif;
+}
