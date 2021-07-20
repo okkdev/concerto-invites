@@ -11,10 +11,10 @@ const Lobby = ({ valid, data }) => {
         <>
           <Head>
             <meta property="og:title" content={msg} />
-            <meta name="theme-color" content="#04750c" />
+            <meta name="theme-color" content="#3ca864" />
             <meta
               property="og:description"
-              content="Click the link to join the lobby with Concerto"
+              content="Click the link to join the lobby with Concerto!"
             />
           </Head>
           <div>{msg}</div>
@@ -37,12 +37,12 @@ const Lobby = ({ valid, data }) => {
         window.location.replace("concerto://lobby:" + data.lobby)
       }, [])
     } else {
-      const msg = "Lobby #" + data.lobby + " is not open anymore"
+      const msg = "Lobby #" + data.lobby + " does not exist"
       body = (
         <>
           <Head>
             <meta property="og:title" content={msg} />
-            <meta name="theme-color" content="#910f12" />
+            <meta name="theme-color" content="#ad3232" />
             <meta
               property="og:description"
               content="Create a new lobby in Concerto!"
@@ -58,7 +58,7 @@ const Lobby = ({ valid, data }) => {
       <>
         <Head>
           <meta property="og:title" content={msg} />
-          <meta name="theme-color" content="#910f12" />
+          <meta name="theme-color" content="#ad3232" />
           <meta
             property="og:description"
             content="Create a new lobby in Concerto!"
