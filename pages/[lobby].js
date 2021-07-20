@@ -11,7 +11,12 @@ const Lobby = ({ valid, data }) => {
         <>
           <Head>
             <meta property="og:title" content={msg} />
+            <meta property="og:url" content={"concerto://lobby:" + msg} />
             <meta name="theme-color" content="#04750c" />
+            <meta
+              property="og:description"
+              content="Click the link to join the lobby with Concerto"
+            />
           </Head>
           <div>{msg}</div>
           <a
@@ -38,7 +43,6 @@ const Lobby = ({ valid, data }) => {
         <>
           <Head>
             <meta property="og:title" content={msg} />
-            <meta name="theme-color" content="#910f12" />
           </Head>
           <div>{msg}</div>
         </>
@@ -50,7 +54,6 @@ const Lobby = ({ valid, data }) => {
       <>
         <Head>
           <meta property="og:title" content={msg} />
-          <meta name="theme-color" content="#910f12" />
         </Head>
         <div>{msg}</div>
       </>
@@ -61,9 +64,10 @@ const Lobby = ({ valid, data }) => {
     <>
       <Head>
         <title>Lobby Invite #{data.lobby}</title>
+        <meta name="theme-color" content="#910f12" />
         <meta
           property="og:description"
-          content="Click the link to join the Lobby with Concerto"
+          content="Create a new lobby in Concerto!"
         />
         <meta
           property="og:image"

@@ -33,16 +33,17 @@ export default function Home() {
     cb.writeText("invite.meltyblood.club/" + lobby).then(() =>
       setFlash({
         error: false,
-        message: "Invite Link copied to clipboard",
+        message: "Invite link copied to clipboard",
       })
     )
   }
 
-  async function copyClick() {
-    await validateLobby()
-    if (!flash.error) {
-      copyLink()
-    }
+  function copyClick() {
+    validateLobby().then(() => {
+      if (!flash.error) {
+        copyLink()
+      }
+    })
   }
 
   return (
