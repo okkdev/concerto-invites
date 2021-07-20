@@ -7,26 +7,21 @@ export default function Home() {
     message: "",
   })
 
-  async function validateLobby() {
-    if (!/^[0-9]{4}$/.test(lobby)) {
-      setFlash({
-        error: true,
-        message: lobby + " is not a valid Lobby",
-      })
-    } else {
-      const res = await fetch(
-        "https://concerto-mbaacc.herokuapp.com/s?action=check&id=" + lobby
-      )
-      const data = await res.json()
-
-      if (data.status !== "OK") {
-        setFlash({
-          error: true,
-          message: "Lobby #" + lobby + " does not exist",
-        })
-      }
-    }
-  }
+  // async function validateLobby() {
+  // wait for cors
+  // else {
+  //   const res = await fetch(
+  //     "https://concerto-mbaacc.herokuapp.com/s?action=check&id=" + lobby
+  //   )
+  //   const data = await res.json()
+  //   if (data.status !== "OK") {
+  //     setFlash({
+  //       error: true,
+  //       message: "Lobby #" + lobby + " does not exist",
+  //     })
+  //   }
+  // }
+  // }
 
   function copyLink() {
     const cb = navigator.clipboard
@@ -39,11 +34,14 @@ export default function Home() {
   }
 
   function copyClick() {
-    validateLobby().then(() => {
-      if (!flash.error) {
-        copyLink()
-      }
-    })
+    if (/^[0-9]{4}$/.test(lobby)) {
+      copyLink()
+    } else {
+      setFlash({
+        error: true,
+        message: lobby + " is not a valid Lobby",
+      })
+    }
   }
 
   return (
