@@ -34,7 +34,7 @@ export default function Home() {
   }
 
   function copyClick() {
-    if (/^[0-9]{4}$/.test(lobby)) {
+    if (/^[a-zA-Z0-9]{2,8}$/.test(lobby)) {
       copyLink()
     } else {
       setFlash({
@@ -51,8 +51,8 @@ export default function Home() {
           value={lobby}
           onChange={(e) => setLobby(e.target.value)}
           type="text"
-          pattern="^[0-9]{4}$"
-          maxLength="4"
+          pattern="^[a-zA-Z0-9]{2,8}$"
+          maxLength="8"
           className="block w-full px-3 bg-gray-900 border border-gray-100 rounded-md shadow-sm outline-none focus:border-2 focus:outline-none"
           placeholder="Lobby Code"
           required

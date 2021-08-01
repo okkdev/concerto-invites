@@ -10,37 +10,42 @@ const Lobby = ({ valid, data }) => {
     return <LobbyDoesNotExist host={data.host} lobby={data.lobby} />
   }
 
-  return <OpenLobby host={data.host} lobby={data.lobby} type={data.type}/>
+  return <OpenLobby host={data.host} lobby={data.lobby} type={data.type} />
 }
 
-function LobbyDoesNotExist({host, lobby}) {
-  const msg = `Lobby #${lobby} does not exist`
-  return <LobbyLayout lobby={lobby} host={host}>
-    <Head>
-      <meta property="og:title" content={msg} />
-      <meta name="theme-color" content="#ad3232" />
-      <meta
-        property="og:description"
-        content="Create a new lobby in Concerto!" />
-    </Head>
-    <p>{msg}</p>
-  </LobbyLayout>
+function LobbyDoesNotExist({ host, lobby }) {
+  const msg = `Lobby "${lobby}" does not exist`
+  return (
+    <LobbyLayout lobby={lobby} host={host}>
+      <Head>
+        <meta property="og:title" content={msg} />
+        <meta name="theme-color" content="#ad3232" />
+        <meta
+          property="og:description"
+          content="Create a new lobby in Concerto!"
+        />
+      </Head>
+      <p>{msg}</p>
+    </LobbyLayout>
+  )
 }
 
-function OpenLobby({host, lobby, type}) {
-  const msg = `Invite to ${type} Lobby #${lobby}`
+function OpenLobby({ host, lobby, type }) {
+  const msg = `Invite to ${type} Lobby "${lobby}"`
 
   useEffect(() => {
     window.location.replace(`concerto://lobby:${lobby}`)
   }, [])
 
-  return <LobbyLayout host={host} lobby={lobby}>
+  return (
+    <LobbyLayout host={host} lobby={lobby}>
       <Head>
         <meta property="og:title" content={msg} />
         <meta name="theme-color" content="#3ca864" />
         <meta
           property="og:description"
-          content="Click the link to join the lobby with Concerto!" />
+          content="Click the link to join the lobby with Concerto!"
+        />
       </Head>
       <p>{msg}</p>
       <a
@@ -52,46 +57,52 @@ function OpenLobby({host, lobby, type}) {
       <div className="mt-6">
         <p className="text-sm">Still not working?</p>
         <p className="text-xs">
-          Did you run Concerto as administrator once to register the
-          handler?
+          Did you run Concerto as administrator once to register the handler?
         </p>
       </div>
     </LobbyLayout>
+  )
 }
 
-function InvalidLobby({host, lobby}) {
-  const msg = `${lobby} is not a valid lobby`
+function InvalidLobby({ host, lobby }) {
+  const msg = `"${lobby}" is not a valid lobby`
 
-  return <LobbyLayout host={host} lobby={lobby}>
-    <Head>
-      <meta property="og:title" content={msg} />
-      <meta name="theme-color" content="#ad3232" />
-      <meta
-        property="og:description"
-        content="Create a new lobby in Concerto!" />
-    </Head>
-    <p>{msg}</p>
-  </LobbyLayout>
+  return (
+    <LobbyLayout host={host} lobby={lobby}>
+      <Head>
+        <meta property="og:title" content={msg} />
+        <meta name="theme-color" content="#ad3232" />
+        <meta
+          property="og:description"
+          content="Create a new lobby in Concerto!"
+        />
+      </Head>
+      <p>{msg}</p>
+    </LobbyLayout>
+  )
 }
 
-function LobbyLayout({host, lobby, children}) {
-  return <>
-    <Head>
-      <title>Lobby Invite #{lobby}</title>
-      <meta
-        property="og:image"
-        content={`https://${host}/img/concerto_icon.png`} />
-    </Head>
+function LobbyLayout({ host, lobby, children }) {
+  return (
+    <>
+      <Head>
+        <title>Lobby Invite #{lobby}</title>
+        <meta
+          property="og:image"
+          content={`https://${host}/img/concerto_icon.png`}
+        />
+      </Head>
 
-    <div className="px-6 mt-5 text-xl font-medium tracking-wider text-center bg-gray-900 rounded-lg shadow-lg py-9">
-      {children}
-    </div>
-  </>
+      <div className="px-6 mt-5 text-xl font-medium tracking-wider text-center bg-gray-900 rounded-lg shadow-lg py-9">
+        {children}
+      </div>
+    </>
+  )
 }
 
 export async function getServerSideProps(context) {
   const lobby = context.params.lobby
-  const valid = /^[0-9]{4}$/.test(lobby)
+  const valid = /^[a-zA-Z0-9]{2,8}$/.test(lobby)
 
   const props = {
     valid: valid,
@@ -100,7 +111,7 @@ export async function getServerSideProps(context) {
       lobby: lobby,
       open: false,
       type: "",
-    }
+    },
   }
 
   if (valid) {
