@@ -86,7 +86,7 @@ function LobbyLayout({ host, lobby, children }) {
   return (
     <>
       <Head>
-        <title>Lobby Invite #{lobby}</title>
+        <title>Lobby Invite "{lobby}"</title>
         <meta
           property="og:image"
           content={`https://${host}/img/concerto_icon.png`}
