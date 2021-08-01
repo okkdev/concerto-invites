@@ -25,7 +25,7 @@ export default function Home() {
 
   function copyLink() {
     const cb = navigator.clipboard
-    cb.writeText("invite.meltyblood.club/" + lobby).then(() =>
+    cb.writeText("https://invite.meltyblood.club/" + lobby).then(() =>
       setFlash({
         error: false,
         message: "Invite link copied to clipboard",
