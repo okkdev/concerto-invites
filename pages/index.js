@@ -7,22 +7,6 @@ export default function Home() {
     message: "",
   })
 
-  // async function validateLobby() {
-  // wait for cors
-  // else {
-  //   const res = await fetch(
-  //     "https://concerto-mbaacc.herokuapp.com/s?action=check&id=" + lobby
-  //   )
-  //   const data = await res.json()
-  //   if (data.status !== "OK") {
-  //     setFlash({
-  //       error: true,
-  //       message: "Lobby #" + lobby + " does not exist",
-  //     })
-  //   }
-  // }
-  // }
-
   function copyLink() {
     const cb = navigator.clipboard
     cb.writeText("https://invite.meltyblood.club/" + lobby).then(() =>

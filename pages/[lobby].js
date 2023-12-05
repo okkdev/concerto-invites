@@ -57,7 +57,7 @@ function OpenLobby({ host, lobby, type }) {
       <div className="mt-6">
         <p className="text-sm">Still not working?</p>
         <p className="text-xs">
-          Did you run Concerto as administrator once to register the handler?
+          Did you run Concerto as administrator once, to register the handler?
         </p>
       </div>
     </LobbyLayout>
@@ -116,7 +116,7 @@ export async function getServerSideProps(context) {
 
   if (valid) {
     const res = await fetch(
-      "https://concerto-mbaacc.herokuapp.com/s?action=check&id=" + lobby
+      "https://concerto-mbaacc.shib.live/s?action=check&id=" + lobby
     )
     const data = await res.json()
 
