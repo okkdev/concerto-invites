@@ -34,7 +34,7 @@ function OpenLobby({ host, lobby, type }) {
   const msg = `Invite to ${type} Lobby "${lobby}"`
 
   useEffect(() => {
-    window.location = `concerto://lobby:${lobby}`
+    window.location.replace(`concerto://lobby/${lobby}`)
   }, [])
 
   return (
@@ -49,7 +49,7 @@ function OpenLobby({ host, lobby, type }) {
       </Head>
       <p>{msg}</p>
       <a
-        href={`concerto://lobby:${lobby}`}
+        href={`concerto://lobby/${lobby}`}
         className="inline-flex items-center py-3 px-6 mt-3 text-base font-medium bg-purple-700 rounded-md border border-transparent shadow-sm hover:bg-purple-800 focus:outline-none"
       >
         Click here if Concerto didn't launch automatically
