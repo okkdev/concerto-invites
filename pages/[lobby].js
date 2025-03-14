@@ -34,7 +34,7 @@ function OpenLobby({ host, lobby, type }) {
   const msg = `Invite to ${type} Lobby "${lobby}"`
 
   useEffect(() => {
-    window.location.replace(`concerto://lobby:${lobby}`)
+    window.location = `concerto://lobby:${lobby}`
   }, [])
 
   return (
@@ -50,7 +50,7 @@ function OpenLobby({ host, lobby, type }) {
       <p>{msg}</p>
       <a
         href={`concerto://lobby:${lobby}`}
-        className="inline-flex items-center px-6 py-3 mt-3 text-base font-medium bg-purple-700 border border-transparent rounded-md shadow-sm hover:bg-purple-800 focus:outline-none"
+        className="inline-flex items-center py-3 px-6 mt-3 text-base font-medium bg-purple-700 rounded-md border border-transparent shadow-sm hover:bg-purple-800 focus:outline-none"
       >
         Click here if Concerto didn't launch automatically
       </a>
@@ -93,7 +93,7 @@ function LobbyLayout({ host, lobby, children }) {
         />
       </Head>
 
-      <div className="px-6 mt-5 text-xl font-medium tracking-wider text-center bg-gray-900 rounded-lg shadow-lg py-9">
+      <div className="py-9 px-6 mt-5 text-xl font-medium tracking-wider text-center bg-gray-900 rounded-lg shadow-lg">
         {children}
       </div>
     </>
@@ -116,7 +116,7 @@ export async function getServerSideProps(context) {
 
   if (valid) {
     const res = await fetch(
-      "https://concerto-mbaacc.shib.live/s?action=check&id=" + lobby
+      "https://concerto-mbaacc.shib.live/s?action=check&id=" + lobby,
     )
     const data = await res.json()
 
